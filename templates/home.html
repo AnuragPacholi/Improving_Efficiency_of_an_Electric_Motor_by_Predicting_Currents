@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Electric Motor</title>
+        <style>
+            h1 {text-align: center; margin-bottom: 45px; margin-top: 45px; font-size: 55px; color: #94e2ff;}
+            /* form {text-align: center;} */
+            button {margin-bottom: 25px; margin-top: 30px; margin-left: 190px;font-size: 32px;}
+            label {font-size: 25px; color: white;}
+            input {font-size: 20px;}
+            p {margin-bottom: 0px; margin-top: 20px; font-size: 30px; color: #94e2ff; text-align: center;}
+            body {background-image: url('https://wallpapercave.com/wp/wp8000721.jpg'); background-size: cover; background-position-y: -80px; background-position-x: 260px;} /* Image used for educational purpose only. */
+        </style>
+    </head>
+
+    <body>
+        <h1>PREDICT CURRENTS FOR ELECTRIC MOTOR</h1>
+        <form action="{{url_for('predict')}}" method="post">
+
+            <label>D-Current at time k: </label>
+            <input type="text" name="id_k" placeholder="id_k in A (ampere)" required="required" size="25"><br>
+
+            <label>Q-Current at time k: </label>
+            <input type="text" name="iq_k" placeholder="iq_k in A (ampere)" required="required" size="25"><br>
+
+            <label>Rotor Angle at time k: </label>
+            <input type="text" name="epsilonn_k" placeholder="epsilon_k in rad (radian)" required="required" size="25"><br>
+
+            <label>Inverter Switching Command (k<-->k+1): </label>
+            <input type="text" name="n_k" placeholder="Applied between time k and k+1" required="required" size="25"><br>
+
+            <label>Inverter Switching Command (k-1<-->k): </label>
+            <input type="text" name="n1_k" placeholder="Applied between time k-1 and k" required="required" size="25"><br><br>
+
+            <button type="submit">Predict Currents</button>
+
+        </form>
+        <p>{{prediction_text}}</p>
+    </body>
+</html>
